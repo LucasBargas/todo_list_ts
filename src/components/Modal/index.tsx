@@ -204,7 +204,7 @@ export const Modal = (props: Props): JSX.Element => {
             <Form handleSubmit={handleSubmit}>
               <Input
                 inputRef={inputRef}
-                placeholder="Digite uma nova Tarefa..."
+                placeholder="Edite sua Tarefa..."
                 handleChange={handleChange}
                 inputValue={inputValue}
                 error={error}
