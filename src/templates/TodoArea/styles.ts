@@ -6,6 +6,10 @@ export const TodoAreaContainer = styled.div`
   box-shadow: 0 .5rem 1.5rem #010409;
   border-radius: .375rem;
   padding: 2rem 3rem;
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+  }
 `;
 
 export const TodoAreaDeleteButtons = styled.div`
@@ -13,4 +17,8 @@ export const TodoAreaDeleteButtons = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;

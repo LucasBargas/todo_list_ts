@@ -116,98 +116,53 @@ export const Modal = (props: Props): JSX.Element => {
           </button>
         </S.ModalButton>
 
-        {!!modalType && modalType === 'deleteAllComplete' && (
-          <React.Fragment>
-            <Title
-              title="Você irá deletar todas as tarefas completas!"
-              legend={
-                completeTaskList.length === 0 && 'Não há tarefas completas.'
-              }
-              fontSize="1.5rem"
-            />
+        <S.ModalAreaContent>
+          {!!modalType && modalType === 'deleteAllComplete' && (
+            <React.Fragment>
+              <Title
+                title="Você irá deletar todas as tarefas completas!"
+                legend={
+                  completeTaskList.length === 0 && 'Não há tarefas completas.'
+                }
+                fontSize="1.5rem"
+              />
 
-            {completeTaskList.length > 0 && <p>Você tem certeza disso?</p>}
+              {completeTaskList.length > 0 && <p>Você tem certeza disso?</p>}
 
-            <S.ModalButtonsController>
-              {completeTaskList.length > 0 && (
+              <S.ModalButtonsController>
+                {completeTaskList.length > 0 && (
+                  <Button
+                    bg={Theme.colors.greenColor}
+                    bgHover={Theme.colors.greenColorHover}
+                    center
+                    handleClick={() => {
+                      props.handleDeleteAllComplete!();
+                      setModal(false);
+                      setLoading(true);
+                    }}
+                  >
+                    Confirmar
+                  </Button>
+                )}
                 <Button
-                  bg={Theme.colors.greenColor}
-                  bgHover={Theme.colors.greenColorHover}
+                  bg={Theme.colors.darkBtnColor}
+                  bgHover={Theme.colors.primaryColor}
                   center
                   handleClick={() => {
-                    props.handleDeleteAllComplete!();
                     setModal(false);
-                    setLoading(true);
                   }}
                 >
-                  Confirmar
+                  Cancelar
                 </Button>
-              )}
-              <Button
-                bg={Theme.colors.darkBtnColor}
-                bgHover={Theme.colors.primaryColor}
-                center
-                handleClick={() => {
-                  setModal(false);
-                }}
-              >
-                Cancelar
-              </Button>
-            </S.ModalButtonsController>
-          </React.Fragment>
-        )}
+              </S.ModalButtonsController>
+            </React.Fragment>
+          )}
 
-        {!!modalType && modalType === 'deleteAll' && (
-          <React.Fragment>
-            <Title
-              title="Você irá deletar todas as tarefas!"
-              fontSize="1.5rem"
-            />
-
-            <p>Você tem certeza disso?</p>
-
-            <S.ModalButtonsController>
-              <Button
-                bg={Theme.colors.greenColor}
-                bgHover={Theme.colors.greenColorHover}
-                center
-                handleClick={() => {
-                  props.handleDeleteAll!();
-                  setModal(false);
-                  setLoading(true);
-                }}
-              >
-                Confirmar
-              </Button>
-              <Button
-                bg={Theme.colors.darkBtnColor}
-                bgHover={Theme.colors.primaryColor}
-                center
-                handleClick={() => {
-                  setModal(false);
-                }}
-              >
-                Cancelar
-              </Button>
-            </S.ModalButtonsController>
-          </React.Fragment>
-        )}
-
-        {!!modalType && modalType === 'editOne' && (
-          <React.Fragment>
-            <Title
-              title="Você está editando a tarefa:"
-              legend={`"${modalLegend}"`}
-              fontSize="1.5rem"
-            />
-
-            <Form handleSubmit={handleSubmit}>
-              <Input
-                inputRef={inputRef}
-                placeholder="Edite sua Tarefa..."
-                handleChange={handleChange}
-                inputValue={inputValue}
-                error={error}
+          {!!modalType && modalType === 'deleteAll' && (
+            <React.Fragment>
+              <Title
+                title="Você irá deletar todas as tarefas!"
+                fontSize="1.5rem"
               />
 
               <p>Você tem certeza disso?</p>
@@ -217,7 +172,11 @@ export const Modal = (props: Props): JSX.Element => {
                   bg={Theme.colors.greenColor}
                   bgHover={Theme.colors.greenColorHover}
                   center
-                  submit
+                  handleClick={() => {
+                    props.handleDeleteAll!();
+                    setModal(false);
+                    setLoading(true);
+                  }}
                 >
                   Confirmar
                 </Button>
@@ -232,42 +191,85 @@ export const Modal = (props: Props): JSX.Element => {
                   Cancelar
                 </Button>
               </S.ModalButtonsController>
-            </Form>
-          </React.Fragment>
-        )}
+            </React.Fragment>
+          )}
 
-        {!!modalType && modalType === 'deleteOne' && (
-          <React.Fragment>
-            <Title
-              title="Você está deletando a tarefa:"
-              legend={`"${modalLegend}"`}
-              fontSize="1.5rem"
-            />
+          {!!modalType && modalType === 'editOne' && (
+            <React.Fragment>
+              <Title
+                title="Você está editando a tarefa:"
+                legend={`"${modalLegend}"`}
+                fontSize="1.5rem"
+              />
 
-            <p>Você tem certeza disso?</p>
+              <Form handleSubmit={handleSubmit}>
+                <Input
+                  inputRef={inputRef}
+                  placeholder="Edite sua Tarefa..."
+                  handleChange={handleChange}
+                  inputValue={inputValue}
+                  error={error}
+                />
 
-            <S.ModalButtonsController>
-              <Button
-                bg={Theme.colors.greenColor}
-                bgHover={Theme.colors.greenColorHover}
-                center
-                handleClick={handleDeleteOne}
-              >
-                Confirmar
-              </Button>
-              <Button
-                bg={Theme.colors.darkBtnColor}
-                bgHover={Theme.colors.primaryColor}
-                center
-                handleClick={() => {
-                  setModal(false);
-                }}
-              >
-                Cancelar
-              </Button>
-            </S.ModalButtonsController>
-          </React.Fragment>
-        )}
+                <p>Você tem certeza disso?</p>
+
+                <S.ModalButtonsController>
+                  <Button
+                    bg={Theme.colors.greenColor}
+                    bgHover={Theme.colors.greenColorHover}
+                    center
+                    submit
+                  >
+                    Confirmar
+                  </Button>
+                  <Button
+                    bg={Theme.colors.darkBtnColor}
+                    bgHover={Theme.colors.primaryColor}
+                    center
+                    handleClick={() => {
+                      setModal(false);
+                    }}
+                  >
+                    Cancelar
+                  </Button>
+                </S.ModalButtonsController>
+              </Form>
+            </React.Fragment>
+          )}
+
+          {!!modalType && modalType === 'deleteOne' && (
+            <React.Fragment>
+              <Title
+                title="Você está deletando a tarefa:"
+                legend={`"${modalLegend}"`}
+                fontSize="1.5rem"
+              />
+
+              <p>Você tem certeza disso?</p>
+
+              <S.ModalButtonsController>
+                <Button
+                  bg={Theme.colors.greenColor}
+                  bgHover={Theme.colors.greenColorHover}
+                  center
+                  handleClick={handleDeleteOne}
+                >
+                  Confirmar
+                </Button>
+                <Button
+                  bg={Theme.colors.darkBtnColor}
+                  bgHover={Theme.colors.primaryColor}
+                  center
+                  handleClick={() => {
+                    setModal(false);
+                  }}
+                >
+                  Cancelar
+                </Button>
+              </S.ModalButtonsController>
+            </React.Fragment>
+          )}
+        </S.ModalAreaContent>
       </S.ModalArea>
     </S.ModalContainer>
   );
