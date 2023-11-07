@@ -15,7 +15,7 @@ export const Footer = (): JSX.Element => {
       </p>
 
       <a
-        href="https://github.com/LucasBargas/todo_list"
+        href="https://github.com/LucasBargas/todo_list_ts"
         target="_blank"
         rel="noopener noreferrer"
       >
