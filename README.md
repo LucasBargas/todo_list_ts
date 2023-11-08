@@ -39,3 +39,32 @@ O projeto **Todo List** foi desenvolvido por mim, Lucas Bargas, com base em um l
 <img alt="Página inicial - Modal de exclusão de uma tarefa específica" src="https://github.com/LucasBargas/moments_frontend/assets/76006347/87168d6d-bf46-4eab-be5c-c88ad934d8cd">
 <img alt="Página inicial - Modal de exclusão de todas as tarefas" src="https://github.com/LucasBargas/moments_frontend/assets/76006347/86e6978d-77db-4869-82e5-7dd05a98d2d6">
 <img alt="Página inicial - Modal de exclusão de todas as tarefas completas" src="https://github.com/LucasBargas/moments_frontend/assets/76006347/d6150663-91a0-4e71-a09e-495fa6daf6ce">
+
+### Como executar este Front End
+
+#### Pré-requisitos
+* Possuir o Nodejs instalado;
+
+#### Clone o repositório
+```bash
+git clone https://github.com/LucasBargas/todo_list_ts.git
+```
+#### Entre na pasta
+```bash
+cd todo_list_ts
+```
+#### Instale as dependências
+```bash
+npm install
+```
+#### Execute o App
+```bash
+npm run dev
+```
+
+# Autor
+Lucas Bargas da Silva
+</br>
+<https://projetoslucasbargas.vercel.app/>
+</br>
+<https://www.linkedin.com/in/lucas-bargas/>
